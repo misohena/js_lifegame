@@ -1,0 +1,19 @@
+
+table.lifegame-table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+table.lifegame-table > tr > td {
+    border: 1px solid #808080;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+td.lifegame-cell-live {
+    background-color: #000000;
+}
+td.lifegame-cell-dead {
+    background-color: #ffffff;
+}

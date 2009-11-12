@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="lifegame.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    <title>JavaScript ライフゲーム</title>
+    <script type="text/javascript" src="lifegame.js"></script>
+  </head>
+  <body>
+    <h1>JavaScript ライフゲーム</h1>
+    <script type="text/javascript">
+game = LifeGameApp.appendLifeGameWithRecreatorAfterLastScriptNode(30, 30);
+//game = LifeGameApp.appendLifeGameAfterLastScriptNode(30, 30);
+// 初期配置(必要なら)
+game.model.put(10, 10,
+ ["** ",
+  " **",
+  " * "
+ ]);
+// 開始(最初からスタートさせるなら)
+game.control.start();
+    </script>
+
+    <h2>参考文献</h2>
+    <ul>
+      <li><a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B2%E3%83%BC%E3%83%A0">ライフゲーム - Wikipedia</a></li>
+      <li><a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life - Wikipedia</a></li>
+    </ul>
+
+    <h2>ソース</h2>
+    <ul>
+      <li><a href="lifegame.js">lifegame.js</a></li>
+      <li><a href="lifegame.css">lifegame.css</a></li>
+    </ul>
+
+    <h2>ページ内への張り方</h2>
+    <pre class="code">
+&lt;html lang="ja"&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" type="text/css" href="lifegame.css"&gt;
+    &lt;script type="text/javascript" src="lifegame.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+
+game = LifeGameApp.appendLifeGameWithRecreatorAfterLastScriptNode(30, 30);
+//game = LifeGameApp.appendLifeGameAfterLastScriptNode(30, 30); //再作成ボタン無しの場合
+
+// 初期配置(必要なら)
+game.model.put(10, 10,
+ ["** ",
+  " **",
+  " * "
+ ]);
+// 開始(最初からスタートさせるなら)
+game.control.start();
+
+    &lt;/script&gt;
+...
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+
+    <h2>簡単なソースの解説</h2>
+    <p>すべてはLifeGameAppの中に定義してあります。主にLifeGameApp.GameWithRecreator、LifeGameApp.Game、LifeGameApp.Model、LifeGameApp.View、LifeGameApp.Controlといったクラスによって構成されています。</p>
+    <p>(LifeGameApp.)GameWithRecreatorクラスは上の再作成バーとGameを含みます。Recreateボタンを押すと、Gameオブジェクトを完全に作り直します。</p>
+    <p>GameクラスはModel, View, Controlを含み、それぞれが連携するようにします。</p>
+    <p>Modelクラスはwidth*heightの配列です(this.cells)。内容が変化したときにthis.funcUpdateを呼ぶようになっています。</p>
+    <p>Viewクラスはテーブルでセルの状態を表示します。コンストラクタでtable、tr、tdを生成します。updateでtdのclassNameを変更します(実際の見え方はcssの定義によって変わります)。マウスによるセル状態の変更が出来るように、イベントリスナーを登録するメソッドを持ちます。</p>
+    <p>Controlクラスはスタート/ストップボタンやクリアボタンをユーザーに提供します。タイマーによって定期的にModelのstepを呼び出す処理も今のところControlが行っています(本来GameやModelが行うべきかもしれませんが)。</p>
+
+    <hr>
+    <address>AKIYAMA Kouhei( k-akiのあとにアットマーク、その後はこのサイトのwww等を除いたドメイン(greenwood))</address>
+    <div><!-- ts start -->Last modified: 2009-11-12 14:51:55+0900<!-- ts end --></div>
+  </body>
+</html>
