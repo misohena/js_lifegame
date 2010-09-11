@@ -72,11 +72,11 @@ game.control.start();
     <p>(LifeGameApp.)GameWithRecreatorクラスは上の再作成バーとGameを含みます。Recreateボタンを押すと、Gameオブジェクトを完全に作り直します。</p>
     <p>GameクラスはModel, View, Controlを含み、それぞれが連携するようにします。</p>
     <p>Modelクラスはwidth*heightの配列です(this.cells)。内容が変化したときにthis.funcUpdateを呼ぶようになっています。</p>
-    <p>Viewクラスはテーブルでセルの状態を表示します。コンストラクタでtable、tr、tdを生成します。updateでtdのclassNameを変更します(実際の見え方はcssの定義によって変わります)。マウスによるセル状態の変更が出来るように、イベントリスナーを登録するメソッドを持ちます。</p>
+    <p>Viewクラスはテーブルでセルの状態を表示します。コンストラクタでtable、tr、tdを生成します。update(cells)でセルの状態に合わせてtdのclassNameを書き換えます(実際の見え方はcssの定義によります)。マウスによるセルの編集が出来るように、イベントリスナーを登録するメソッドを持ちます。</p>
     <p>Controlクラスはスタート/ストップボタンやクリアボタンをユーザーに提供します。タイマーによって定期的にModelのstepを呼び出す処理も今のところControlが行っています(本来GameやModelが行うべきかもしれません。ボタン類を表示しないようにしたい場合を考えると特に。でもGameやModelがやるのも何か嫌なので、「時間進行役」みたいな意味のクラスを作るべきかも)。</p>
 
     <hr>
     <address>AKIYAMA Kouhei( k-akiのあとにアットマーク、その後はこのサイトのwww等を除いたドメイン(greenwood))</address>
-    <div><!-- ts start -->Last modified: 2009-11-12 14:51:55+0900<!-- ts end --></div>
+    <div><!-- ts start -->Last modified: 2009-11-13 22:50:36+0900<!-- ts end --></div>
   </body>
 </html>
